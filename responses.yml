@@ -1,0 +1,77 @@
+responses:
+    install:
+        message: |
+          Here's some information regarding the anaconda/miniconda installers, how to update
+          conda from an existing installation, and some tips when troubleshooting an
+          installation/upgrade
+        helpful_links:
+            - url: https://www.anaconda.com/blog/keeping-anaconda-date
+              title: Keeping Anaconda Up to Date
+            - url: https://www.anaconda.com/blog/whats-in-a-name-clarifying-the-anaconda-metapackage
+              title: Understanding the Anaconda metapackage
+            - url: https://www.anaconda.com/blog/what-to-do-when-things-go-wrong-in-anaconda
+              title: How to Troubleshoot Python Software in Anaconda Distribution
+    package installation:
+        message: |
+          Here's our documentation on using conda as a package manager and how to configure conda
+          to improve package management performance
+        helpful_links:
+            - url: https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/installing-with-conda.html
+              title: Installing with Conda
+            - url: https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/conda-performance.html
+              title: Conda performance
+    solver:
+        message: Here's an overview of the current state of the conda solver
+        helpful_links:
+            - url: https://www.anaconda.com/blog/understanding-and-improving-condas-performance
+              title: Understanding and Improving Conda's Performance
+    navigator:
+        message: |
+          Here's some documentation which can help troubleshoot issues with the Anaconda Navigator
+        helpful_links:
+            - url: https://www.anaconda.com/blog/what-to-do-when-things-go-wrong-in-anaconda
+              title: How to Troubleshoot Python Software in Anaconda Distribution
+    release notes:
+        message: |
+          These are the latest release notes and some information about what's new in this latest
+          release
+        helpful_links:
+            - url: https://www.anaconda.com/blog/individual-edition-2020-07
+              title: Announcement Blog
+            - url: https://docs.anaconda.com/anaconda/reference/release-notes/#release-notes
+              title: Release Notes
+    environments:
+        message: |
+          The following links provide information on how to manage conda environments
+        helpful_links:
+            - url: https://www.anaconda.com/blog/moving-conda-environments
+              title: Moving Conda environments
+            - url: https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html#managing-environments
+              title: Managing Environments
+    pip:
+        message: |
+          Here's some documentation explaining pip-conda best practices. I've also included
+          existing Github issues documenting some current unexepected behaviors.
+        helpful_links:
+            - url: https://www.anaconda.com/blog/using-pip-in-a-conda-environment
+              title: Using Pip in a Conda Environment
+            - url: https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/pip-interoperability.html#improving-interoperability-with-pip
+              title: Improving Interoperability with Pip
+            - url: https://github.com/conda/conda/issues/9795
+              title: Github Issue Detailing Existing Pip-Conda Issues
+    conda:
+        message: |
+          Here's some introductory information on getting starting with conda, including some more
+          advanced configuation features
+        helpful_links:
+            - url: https://www.anaconda.com/blog/understanding-and-improving-condas-performance
+              title: Understanding and Improving Conda's Performance
+            - url: https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html
+              title: Configuring Conda Using `conda config` and the .condarc File
+    virtual packages:
+        message: |
+          Here's some documentation about how virtual packages and used and managed in conda
+        helpful_links:
+            - url: https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-virtual.html
+              title: Managing Virtual Packages
+
