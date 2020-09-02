@@ -4,17 +4,15 @@ from .SummonableBot import SummonableBot
 
 class Librarian(SummonableBot):
 
-    def __init__(self, bot_name):
+    def __init__(self, bot_name, event):
         self.help_command = 'help'
         self.help_preamble = "Here are my available responses"
+        self.event = event
         with open('./responses.yml') as file:
             response_list = yaml.load(file, Loader=yaml.FullLoader)
             available_responses = response_list.get('responses').keys()
             regex_for_responses = "\\s*|".join(available_responses)
             self.summoning_regex = r'(@' + bot_name + r')\s*' + f'({regex_for_responses}\\s*|{self.help_command})'
-
-    def has_been_summoned(self, comment_body):
-        return re.search(self.summoning_regex, comment_body, re.MULTILINE)
 
     def __prepare_new_issue_text(self, top_message, links):
         s = top_message + """\n\n- """
@@ -26,7 +24,10 @@ class Librarian(SummonableBot):
         s += "\n- ".join(response for response in responses)
         return s
 
-    def check_library(self, user_help_match):
+    def has_been_summoned(self, comment_body):
+        return re.search(self.summoning_regex, comment_body, re.MULTILINE)
+
+    async def check_library(self, user_help_match):
         message = None
         with open('./responses.yml') as file:
             response_list = yaml.load(file, Loader=yaml.FullLoader)
@@ -39,4 +40,6 @@ class Librarian(SummonableBot):
                 requested_response = response_list.get('responses').get(response_to_fetch, '')
                 message = self.__prepare_new_issue_text(
                     requested_response.get('message', ''), requested_response.get('helpful_links', []))
-        return message
+
+        if message:
+            await self.event.add_comment(message)

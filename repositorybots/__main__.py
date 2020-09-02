@@ -24,17 +24,15 @@ async def main(request):
         if event.event == "ping":
             return web.Response(status=200)
 
-        # initiate the bots
         bot_name = os.environ.get("BOT_NAME")
-        librarian = Librarian.Librarian(bot_name)
-        claBot = ClaBot.ClaBot(bot_name)
         
         async with aiohttp.ClientSession() as session:
             gh = gh_aiohttp.GitHubAPI(session, bot_name,
                                       oauth_token=oauth_token,
                                       cache=cache)
+
             await asyncio.sleep(1)
-            await router.dispatch(event, gh, librarian=librarian, claBot=claBot, session=session)
+            await router.dispatch(event, gh, bot_name, session=session)
         try:
             print('GH requests remaining:', gh.rate_limit.remaining)
         except AttributeError:
@@ -45,7 +43,7 @@ async def main(request):
         return web.Response(status=500)
 
 
-if __name__ == "__main__":  # pragma: no cover
+if __name__ == "__main__":
     app = web.Application()
     app.router.add_post("/", main)
     port = os.environ.get("PORT")
