@@ -6,7 +6,7 @@ repositories, independent of the GitHub organization in which they reside.
 
 ## Requirements for Adding to a Repository
 
-* Webhook added to repository settiongs using this URL: https://conda-bots.herokuapp.com/ . The secret
+* Webhook added to repository settings using this URL: https://conda-bots.herokuapp.com/ . The secret
 for this webhook stored in `GH_SECRET` of the deployed heroku app should be added to the GitHub webhook
 configuration. The webhook can be configured to either send all events to this heroku application or
 an allowlist of only the following events:
