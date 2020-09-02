@@ -30,11 +30,11 @@ The ClaBot class of this application is configured to respond automatically to p
 being summoned on an existing pull request in an issue comment. If it finds the user in the conda/cla-config
 contributors list, the ClaBot will do the following:
 
-    * add the `cla-signed` label to the PR
-    * mark the `verification/cla-signed` status for the PR as successful.
+* add the `cla-signed` label to the PR
+* mark the `verification/cla-signed` status for the PR as successful.
 
 If the bot does not find the user in the accepted contributors list, the ClaBot will:
 
-    * mark the `verification/cla-signed` status for the PR as failed.
-    * include a welcome message in an issue comment with instructions on signing the CLA for newly opened pull requests.
+* mark the `verification/cla-signed` status for the PR as failed.
+* include a welcome message in an issue comment with instructions on signing the CLA for newly opened pull requests.
 
