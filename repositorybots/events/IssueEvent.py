@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class Event(ABC):
+class IssueEvent(ABC):
 
     @property
     @abstractmethod

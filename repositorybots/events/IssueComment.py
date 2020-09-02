@@ -1,6 +1,6 @@
-from .Event import Event
+from .IssueEvent import IssueEvent
 
-class IssueComment(Event):
+class IssueComment(IssueEvent):
     
     def __init__(self, github_conn, event):
         self._github_conn = github_conn
