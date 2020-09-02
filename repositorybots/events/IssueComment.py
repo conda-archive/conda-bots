@@ -21,7 +21,7 @@ class IssueComment(Event):
 
     @property
     def is_pull_request_comment(self):
-        return self.event.data.get('issue', {}).get('pull_request')
+        return self.event_body.data.get('issue', {}).get('pull_request')
 
     async def get_associated_pull_request(self):
         if not self._associated_pull_request:

@@ -13,7 +13,7 @@ class Event(ABC):
         pass
 
     @abstractmethod
-    def get_pull_request_author(self):
+    def get_author(self):
         pass
 
     @abstractmethod
