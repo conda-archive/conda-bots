@@ -2,6 +2,7 @@ from gidgethub import routing
 from aiohttp import web
 from ..bots import Librarian, ClaBot
 from ..events.OpenedPullRequest import OpenedPullRequest
+from ..events.SyncronizedPullRequest import SyncronizedPullRequest
 from ..events.IssueComment import IssueComment
 
 summon_router = routing.Router()
@@ -25,6 +26,14 @@ async def respond_to_summons(event, gh, bot_name, *args, **kwargs):
 @summon_router.register("pull_request", action="opened")
 async def check_cla_on_new_pr(event, gh, bot_name, *args, **kwargs):
     pull_request_event = OpenedPullRequest(gh, event)
+    claBot = ClaBot.ClaBot(bot_name, gh, pull_request_event)
+    await claBot.check_authorized_users()
+    return web.Response(status=200)
+
+
+@summon_router.register("pull_request", action="synchronize")
+async def check_cla_on_new_pr_commit(event, gh, bot_name, *args, **kwargs):
+    pull_request_event = SyncronizedPullRequest(gh, event)
     claBot = ClaBot.ClaBot(bot_name, gh, pull_request_event)
     await claBot.check_authorized_users()
     return web.Response(status=200)

@@ -3,6 +3,7 @@ import json
 from jinja2 import Template
 from .SummonableBot import SummonableBot
 from ..events.OpenedPullRequest import OpenedPullRequest
+from ..events.SyncronizedPullRequest import SyncronizedPullRequest
 
 class ClaBot(SummonableBot):
 
@@ -36,7 +37,7 @@ class ClaBot(SummonableBot):
         return re.search(self.summoning_regex, comment_body, re.MULTILINE)
 
     async def check_authorized_users(self):
-        should_send_welcome_msg = isinstance(self.event, OpenedPullRequest)
+        should_send_welcome_msg = isinstance(self.event, OpenedPullRequest) or isinstance(self.event, SyncronizedPullRequest)
 
         accepted_signers_config = await self.__retrieve_cla_config()
         accepted_signers = accepted_signers_config.get("contributors")
